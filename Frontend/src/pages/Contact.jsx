@@ -23,17 +23,45 @@ function Contact() {
     return () => observer.disconnect();
   }, []);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus("");
-    emailjs
-      .sendForm("service_qmbfomk", "template_9pb52qc", form.current, "asuKIz-I0QCbaAqE2")
-      .then(
-        () => { setLoading(false); setStatus("success"); form.current.reset(); },
-        (error) => { setLoading(false); setStatus("error"); console.log(error); }
-      );
+  const sendEmail = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setStatus("");
+
+  const formData = {
+    name: form.current.user_name.value,
+    email: form.current.user_email.value,
+    message: form.current.message.value,
   };
+
+  try {
+    // ✅ 1. Send Email (EmailJS)
+    await emailjs.sendForm(
+      "service_qmbfomk",
+      "template_9pb52qc",
+      form.current,
+      "asuKIz-I0QCbaAqE2"
+    );
+
+    // ✅ 2. Store in Database (Backend)
+    await fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    setStatus("success");
+    form.current.reset();
+
+  } catch (error) {
+    console.log(error);
+    setStatus("error");
+  }
+
+  setLoading(false);
+};
 
   return (
     <section
