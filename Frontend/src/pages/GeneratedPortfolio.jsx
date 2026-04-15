@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import BASE_URL from '../config.js';
 
 // ✅ Import Templates
 import Template1 from "../components/templates/Template1";
@@ -15,7 +16,7 @@ const GeneratedPortfolio = () => {
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/portfolio/${id}`);
+        const res = await fetch(`${BASE_URL}/api/portfolio/${id}`);
         const result = await res.json();
 
         setData(result);

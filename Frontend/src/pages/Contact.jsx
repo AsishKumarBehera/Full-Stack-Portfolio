@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import Icon from "../components/Icon";
+import BASE_URL from '../config.js';
 
 const contactInfo = [
   { icon: "mail", label: "Email", text: "basishkumar54@gmail.com" },
@@ -47,7 +48,7 @@ function Contact() {
     );
 
     // ✅ 2. Store in Database (Backend)
-    await fetch("http://localhost:5000/api/contact", {
+    await fetch(`${BASE_URL}/api/contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
+import BASE_URL from '../config.js';
 
 const Template1 = () => {
   const { id } = useParams();
@@ -8,7 +9,7 @@ const Template1 = () => {
   const sectionRef = useRef();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/portfolio/${id}`)
+    fetch(`${BASE_URL}/api/portfolio/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);

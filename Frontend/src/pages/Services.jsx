@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from '../config.js';
 
 const Services = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Services = () => {
 
   useEffect(() => {
     setTimeout(() => setVisible(true), 100);
-    fetch("http://localhost:5000/api/portfolio")
+    fetch(`${BASE_URL}/api/portfolio`)
       .then(res => res.json())
       .then(data => setSavedPortfolios(data));
   }, []);
@@ -123,7 +124,7 @@ const Services = () => {
     });
 
     try {
-      const res = await fetch("http://localhost:5000/api/portfolio/save", {
+      const res = await fetch(`${BASE_URL}/api/portfolio/save`, {
         method: "POST",
         body: form,
       });
