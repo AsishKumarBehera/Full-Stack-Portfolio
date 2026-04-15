@@ -9,6 +9,8 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Experience from "./pages/Experience";
+import Services from "./pages/Services";
+import GeneratedPortfolio from "./pages/GeneratedPortfolio";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -34,6 +36,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/experience" element={<Experience />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/portfolio/:id" element={<GeneratedPortfolio />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>

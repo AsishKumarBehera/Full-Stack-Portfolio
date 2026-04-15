@@ -42,8 +42,7 @@ function Home() {
     return (
         <>
             <section className="relative min-h-screen flex flex-col items-center justify-center
-                text-center px-6 overflow-hidden
-                pt-24 pb-16 md:pt-0 md:pb-16
+                text-center overflow-hidden md:pt-10
                 bg-white dark:bg-[#0a0a0f] transition-colors duration-300">
 
                 {/* Grid background */}
@@ -55,7 +54,6 @@ function Home() {
                         maskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)"
                     }}
                 />
-
                 {/* Animated glow orbs */}
                 <div className="absolute -top-32 -left-20 w-96 h-96 rounded-full blur-[80px]
                     opacity-10 dark:opacity-20 bg-purple-400 dark:bg-purple-600
@@ -77,37 +75,16 @@ function Home() {
                         backgroundSize: "32px 32px",
                     }} />
 
-                {/* Floating tags — slide in from sides */}
-                <div className={`hidden md:block absolute top-1/4 left-6
-                    bg-white/80 dark:bg-[#0f0e19]/90
-                    border border-purple-200 dark:border-purple-900/40
-                    rounded-xl px-4 py-2 text-xs
-                    text-gray-500 dark:text-white/50 backdrop-blur
-                    transition-all duration-700 ease-out delay-[800ms]
-                    ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}>
-                    <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse" />
-                    React • Node.js
-                </div>
-                <div className={`hidden md:block absolute top-1/3 right-6
-                    bg-white/80 dark:bg-[#0f0e19]/90
-                    border border-purple-200 dark:border-purple-900/40
-                    rounded-xl px-4 py-2 text-xs
-                    text-gray-500 dark:text-white/50 backdrop-blur
-                    transition-all duration-700 ease-out delay-[900ms]
-                    ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}>
-                    <span className="inline-block w-2 h-2 rounded-full bg-blue-400 mr-2 animate-pulse" />
-                    Full Stack Dev
-                </div>
 
                 {/* Content */}
-                <div className="relative z-10 flex flex-col items-center">
+                <div className="relative z-10 flex flex-col items-center md:gap-5 gap-8">
 
                     {/* Badge — fades down from top */}
                     <div className={`flex items-center gap-2
                         bg-purple-50 dark:bg-purple-500/10
                         border border-purple-300 dark:border-purple-500/30
                         text-purple-600 dark:text-purple-300
-                        text-xs tracking-widest px-5 py-2 rounded-full mb-4 sm:mb-8
+                        text-xs tracking-widest px-5 py-2 sm:pt-3 sm:pb-3 rounded-full mb-4 sm:mb-8
                         transition-all duration-700 ease-out
                         ${visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"}`}>
                         <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-purple-400 animate-pulse" />

@@ -1,10 +1,11 @@
 import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import Icon from "../components/Icon";
 
 const contactInfo = [
-  { icon: "✉", label: "Email", text: "basishkumar54@gmail.com" },
-  { icon: "📍", label: "Location", text: "India" },
-  { icon: "⎇", label: "GitHub", text: "github.com/AsishKumarBehera" },
+  { icon: "mail", label: "Email", text: "basishkumar54@gmail.com" },
+  { icon: "location", label: "Location", text: "India" },
+  { icon: "github", label: "GitHub", text: "github.com/AsishKumarBehera" },
 ];
 
 function Contact() {
@@ -27,6 +28,8 @@ function Contact() {
   e.preventDefault();
   setLoading(true);
   setStatus("");
+
+  
 
   const formData = {
     name: form.current.user_name.value,
@@ -152,7 +155,7 @@ function Contact() {
                     text-purple-600 dark:text-purple-300
                     group-hover:bg-purple-500 group-hover:text-white
                     transition-all duration-300">
-                    {item.icon}
+                   <Icon name={item.icon} className="w-5 h-5 text-purple-600 dark:text-purple-300 group-hover:text-white" />
                   </div>
                   <div>
                     <p className="text-[10px] tracking-widest uppercase

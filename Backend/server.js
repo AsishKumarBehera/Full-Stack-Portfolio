@@ -1,28 +1,32 @@
+// ✅ These must be the first two lines
+import dotenv from "dotenv";
+dotenv.config();
+
+// Now the rest of your imports
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import contactRoutes from "./routes/contact.js";
-
-dotenv.config();
+import portfolioRoutes from "./routes/portfolioRoutes.js";
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
 app.use("/api/contact", contactRoutes);
-// app.use("/api/health", );
+app.use("/api/portfolio", portfolioRoutes);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected ✅"))
   .catch((err) => console.log(err));
 
-// Server Start
 app.listen(5000, () => {
   console.log("Server running on port 5000 🚀");
 });
