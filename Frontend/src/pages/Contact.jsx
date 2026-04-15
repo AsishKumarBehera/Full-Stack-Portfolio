@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import Icon from "../components/Icon";
-import BASE_URL from '../config.js';
+import BASE_URL from '../config';
 
 const contactInfo = [
   { icon: "mail", label: "Email", text: "basishkumar54@gmail.com" },

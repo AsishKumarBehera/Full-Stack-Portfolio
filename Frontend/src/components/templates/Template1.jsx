@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import BASE_URL from '../config.js';
+import BASE_URL from '../../config';
 
 const Template1 = () => {
   const { id } = useParams();
